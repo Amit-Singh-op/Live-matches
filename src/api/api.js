@@ -9,9 +9,9 @@ export const getmathes=()=>{
 };
 
 export const getdetails=(id)=>{
-    const url='https://cricapi.com/api/cricketScore/?apikey=3i0A39wt8iOSts8F2AYsAZbSCY03&unique_id={id}';
+    const url=`https://cricapi.com/api/cricketScore/?apikey=3i0A39wt8iOSts8F2AYsAZbSCY03&unique_id=${id}`;
 
     return fetch(url)
         .then((responce)=>responce.json())
         .catch((error)=>console.log("Error : ",error));
-}
+};

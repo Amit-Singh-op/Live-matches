@@ -9,6 +9,9 @@ const Ca=({match})=>{
 
     const [open,setOpen]=useState(false);
 
+
+    
+
     
     const handleClick=(id)=>{
 
@@ -19,7 +22,7 @@ const Ca=({match})=>{
         })
         .catch(error=>console.log(error));
         
-       //salert(id);
+       //alert(id);
 
     };
     const handleClose=()=>{
@@ -73,15 +76,9 @@ const Ca=({match})=>{
             <DialogTitle id="alert-dialog-title">{"Match details...."}</DialogTitle>
             <DialogContent>
             <DialogContentText id="alert-dialog-discription">
-                <Typography>
-                    {detail.stat}
+                <Typography style={{fontWeight:"bold"}}>
+                    {detail.stat==="No result"? "Match is Going on" :"Match has ended"}
                 </Typography>
-                <Typography>
-                    Match   <span style={{fontStyle:"italic",fontWeight:"bold"}}>
-                        {detail.matchStarted?"Started":"Still not started"}
-                    </span>
-                </Typography>
-
                 <Typography>
                     <h3 style={{fontWeight:"bold"}}>Score</h3>   <span>{detail.score}</span>
                 </Typography>
