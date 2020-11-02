@@ -1,6 +1,7 @@
 import { Button, Card, CardActions, CardContent, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, Typography } from "@material-ui/core";
 import React, { useState } from "react";
 import { getdetails } from "../api/api";
+import './mycard.css'
 //import { BrowserRouter as Router } from 'react-router-dom';
 
 const Ca=({match})=>{
@@ -21,8 +22,6 @@ const Ca=({match})=>{
             handleOpen();
         })
         .catch(error=>console.log(error));
-        
-       //alert(id);
 
     };
     const handleClose=()=>{
@@ -35,7 +34,7 @@ const Ca=({match})=>{
     const getmatchcart=()=>{
     return (
         <Card style={{marginTop:20}}>
-            <CardContent style={{backgroundColor:'palevioletred'}}>
+            <CardContent className="match">
                 <Grid container justify="center" alignItems="center" spacing={4}>
                     <Grid item> 
                     <Typography variant="h5">  
@@ -53,7 +52,7 @@ const Ca=({match})=>{
                 </Grid>
                 
             </CardContent>
-            <CardActions style={{backgroundColor:'palevioletred'}}>
+            <CardActions className="show">
                 <Grid container justify="center">
                 <Button onClick={()=>{
                     handleClick(match.unique_id);
@@ -72,17 +71,18 @@ const Ca=({match})=>{
     };
     
     const getdialog=()=>(
-        <Dialog open={open} onClose={handleClose}>
+        <Dialog open={open} onClose={handleClose} className="threedee">
             <DialogTitle id="alert-dialog-title">{"Match details...."}</DialogTitle>
             <DialogContent>
             <DialogContentText id="alert-dialog-discription">
                 <Typography style={{fontWeight:"bold"}}>
-                    {detail.stat==="No result"? "Match is Going on" :"Match has ended"}
+                 {detail.matchStarted===true?(detail.stat==="No result"? "Match is Going on.......\n" :`Match has ended\n : ${detail.stat}`):"Match is not Started"}
                 </Typography>
-                <Typography>
+                {detail.matchStarted===true?
+                (<Typography>
                     <h3 style={{fontWeight:"bold"}}>Score</h3>   <span>{detail.score}</span>
-                </Typography>
-
+                </Typography>):" "
+                }
 
             </DialogContentText>
             </DialogContent>

@@ -1,0 +1,10 @@
+.match
+{
+    background-color: tomato;
+}
+.show{
+    background-color: teal;
+}
+.card{
+    border-radius: 50px;
+}
